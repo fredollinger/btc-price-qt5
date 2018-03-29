@@ -1,0 +1,43 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AR	Makefile	/^AR            = ar cqs$/;"	m	language:Make
+CC	Makefile	/^CC            = gcc$/;"	m	language:Make
+CFLAGS	Makefile	/^CFLAGS        = -m64 -pipe -O2 -Wall -W -D_REENTRANT -fPIE $(DEFINES)$/;"	m	language:Make
+CHK_DIR_EXISTS	Makefile	/^CHK_DIR_EXISTS= test -d$/;"	m	language:Make
+COMPRESS	Makefile	/^COMPRESS      = gzip -9f$/;"	m	language:Make
+COPY	Makefile	/^COPY          = cp -f$/;"	m	language:Make
+COPY_DIR	Makefile	/^COPY_DIR      = cp -f -R$/;"	m	language:Make
+COPY_FILE	Makefile	/^COPY_FILE     = cp -f$/;"	m	language:Make
+CXX	Makefile	/^CXX           = g++$/;"	m	language:Make
+CXXFLAGS	Makefile	/^CXXFLAGS      = -m64 -pipe -O2 -std=c++0x -Wall -W -D_REENTRANT -fPIE $(DEFINES)$/;"	m	language:Make
+DEFINES	Makefile	/^DEFINES       = -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB$/;"	m	language:Make
+DEL_DIR	Makefile	/^DEL_DIR       = rmdir$/;"	m	language:Make
+DEL_FILE	Makefile	/^DEL_FILE      = rm -f$/;"	m	language:Make
+DESTDIR	Makefile	/^DESTDIR       = #avoid trailing-slash linebreak$/;"	m	language:Make
+DIST	Makefile	/^DIST          = \/usr\/lib\/x86_64-linux-gnu\/qt5\/mkspecs\/features\/spec_pre.prf \\$/;"	m	language:Make
+INCPATH	Makefile	/^INCPATH       = -I\/usr\/lib\/x86_64-linux-gnu\/qt5\/mkspecs\/linux-g++-64 -I. -I. -isystem \/usr\/include\/x86_64-linux-gnu\/qt5 -isystem \/usr\/include\/x86_64-linux-gnu\/qt5\/QtWidgets -isystem \/usr\/include\/x86_64-linux-gnu\/qt5\/QtGui -isystem \/usr\/include\/x86_64-linux-gnu\/qt5\/QtCore -I.$/;"	m	language:Make
+INSTALL_DIR	Makefile	/^INSTALL_DIR   = $(COPY_DIR)$/;"	m	language:Make
+INSTALL_FILE	Makefile	/^INSTALL_FILE  = install -m 644 -p$/;"	m	language:Make
+INSTALL_PROGRAM	Makefile	/^INSTALL_PROGRAM = install -m 755 -p$/;"	m	language:Make
+LFLAGS	Makefile	/^LFLAGS        = -m64 -Wl,-O1$/;"	m	language:Make
+LIBS	Makefile	/^LIBS          = $(SUBLIBS) -L\/usr\/X11R6\/lib64 -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread $/;"	m	language:Make
+LINK	Makefile	/^LINK          = g++$/;"	m	language:Make
+MAKEFILE	Makefile	/^MAKEFILE      = Makefile$/;"	m	language:Make
+MKDIR	Makefile	/^MKDIR         = mkdir -p$/;"	m	language:Make
+MOVE	Makefile	/^MOVE          = mv -f$/;"	m	language:Make
+OBJECTS	Makefile	/^OBJECTS       = main.o$/;"	m	language:Make
+OBJECTS_DIR	Makefile	/^OBJECTS_DIR   = .\/$/;"	m	language:Make
+QMAKE	Makefile	/^QMAKE         = \/usr\/lib\/x86_64-linux-gnu\/qt5\/bin\/qmake$/;"	m	language:Make
+QMAKE_TARGET	Makefile	/^QMAKE_TARGET  = btc-price-qt5$/;"	m	language:Make
+RANLIB	Makefile	/^RANLIB        = $/;"	m	language:Make
+SED	Makefile	/^SED           = sed$/;"	m	language:Make
+SOURCES	Makefile	/^SOURCES       = main.cpp $/;"	m	language:Make
+STRIP	Makefile	/^STRIP         = strip$/;"	m	language:Make
+SYMLINK	Makefile	/^SYMLINK       = ln -f -s$/;"	m	language:Make
+TAR	Makefile	/^TAR           = tar -cf$/;"	m	language:Make
+TARGET	Makefile	/^TARGET        = btc-price-qt5$/;"	m	language:Make
+main	main.cpp	/^int main( int argc, char **argv )$/;"	f	language:C++
