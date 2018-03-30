@@ -10,4 +10,7 @@ QT += widgets network
 CONFIG += c++11
 
 # Input
-SOURCES += main.cpp
+SOURCES += main.cpp \
+exchangerate.cpp
+
+HEADERS += exchangerate.h

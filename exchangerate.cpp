@@ -2,7 +2,6 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <QApplication>
 #include <QDebug>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
@@ -11,10 +10,16 @@
 
 #include "exchangerate.h"
 
-int main( int argc, char **argv )
+ExchangeRate::ExchangeRate(QObject* parent) : QObject(parent)
 {
-    QApplication a( argc, argv );
-    ExchangeRate er(nullptr);
+    // netManager is used to fetch paymentrequests given in bitcoin: URIs
+    // netManager = new QNetworkAccessManager(this);
+}
 
-    return a.exec();
+ExchangeRate::~ExchangeRate()
+{
+}
+
+void ExchangeRate::initNetManager()
+{
 }
