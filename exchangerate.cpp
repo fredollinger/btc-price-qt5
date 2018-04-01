@@ -7,8 +7,13 @@
 #include <QNetworkReply>
 #include <QNetworkRequest>
 #include <QUrl>
+#include <QTimer>
 
 #include "exchangerate.h"
+
+// TODO make all these into a data structure to support
+// more currencies
+static QString btcUrl  = "https://api.coinbase.com/v2/prices/spot?currency=USD";
 
 ExchangeRate::ExchangeRate(QObject* parent) :
 QObject(parent),
@@ -23,6 +28,7 @@ ExchangeRate::~ExchangeRate()
     if (netManager)
     {
         delete netManager;
+	netManager = 0;
     }
 }
 
@@ -35,19 +41,30 @@ void ExchangeRate::initNetManager()
         this, SLOT(netRequestFinished(QNetworkReply*)));
     connect(netManager, SIGNAL(sslErrors(QNetworkReply*, const QList<QSslError> &)),
         this, SLOT(reportSslErrors(QNetworkReply*, const QList<QSslError> &)));
-}
 
-void ExchangeRate::netRequestFinished(QNetworkReply* reply)
-{
-    reply->deleteLater();
+    fetchRequest(btcUrl);
 }
 
 void ExchangeRate::reportSslErrors(QNetworkReply* reply, const QList<QSslError> &errs)
 {
+    qDebug() << __PRETTY_FUNCTION__;
     Q_UNUSED(reply);
 }
 
 void ExchangeRate::fetchRequest(const QUrl& url)
 {
-    netManager->get(QNetworkRequest(QUrl(url)));
+
+    QNetworkReply *reply = netManager->get(QNetworkRequest(QUrl(url)));
+    qDebug() << reply->error();
+
+}
+
+void ExchangeRate::uiReady() {
+    initNetManager();
+}
+
+void ExchangeRate::netRequestFinished(QNetworkReply* reply)
+{
+    qDebug() << __PRETTY_FUNCTION__ << reply->readAll();
+    reply->deleteLater();
 }

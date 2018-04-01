@@ -21,6 +21,11 @@ public:
     ExchangeRate(QObject*);
     virtual ~ExchangeRate(void);
 
+public Q_SLOTS:
+    // Signal this when the main window's UI is ready
+    // to display payment requests to the user
+    void uiReady();
+
 private slots:
     void netRequestFinished(QNetworkReply*);
     void reportSslErrors(QNetworkReply* reply, const QList<QSslError> &errs);
