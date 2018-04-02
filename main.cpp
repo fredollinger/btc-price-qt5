@@ -16,6 +16,7 @@ int main( int argc, char **argv )
     QApplication a( argc, argv );
     ExchangeRate er(nullptr);
     er.uiReady();
+    er.requestPrice("USD");
 
     return a.exec();
 }
