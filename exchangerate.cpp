@@ -14,9 +14,6 @@
 
 #include "exchangerate.h"
 
-// #define BTC_PRICE  "{\"data\":{\"base\":\"BTC\",\"currency\":\"USD\",\"amount\":\"6939.01\"},\"warnings\":[{\"id\":\"missing_version\",\"message\":\"Please supply API version (YYYY-MM-DD) as CB-VERSION header\",\"url\":\"https://developers.coinbase.com/api#versioning\"}]}"
-#define BTC_PRICE "{\"data\":{\"base\":\"BTC\",\"currency\":\"USD\",\"amount\":\"6930.00\"},\"warnings\":[{\"id\":\"missing_version\",\"message\":\"Please supply API version (YYYY-MM-DD) as CB-VERSION header\",\"url\":\"https://developers.coinbase.com/api#versioning\"}]}"
-
 // TODO make all these into a data structure to support
 // more currencies
 static QString btcUrl = "https://api.coinbase.com/v2/prices/spot?currency=";
@@ -76,30 +73,24 @@ void ExchangeRate::netRequestFinished(QNetworkReply* reply)
 {
     reply->deleteLater();
     QByteArray res = reply->readAll();
-    qDebug() << __PRETTY_FUNCTION__ << "[" << res << "]";
     QJsonParseError err;
     QJsonDocument doc = QJsonDocument::fromJson(res, &err);
     if (!doc.isObject()) {
         qDebug() << __PRETTY_FUNCTION__ << "[" << err.errorString() << "]";
 	return;
     }
-    else
-        qDebug() << __PRETTY_FUNCTION__ << "valid doc!!";
 
     QJsonObject arr = doc.object();
 
     QJsonObject::const_iterator i;
-
-    qDebug() << __PRETTY_FUNCTION__ << arr.count();
     for (i = arr.begin(); i != arr.end(); ++i) {
-        qDebug() << __PRETTY_FUNCTION__ << "valid doc!!";
-        qDebug() << (*i);
+	bool ok;
+        float f = (*i).toObject()["amount"].toString().toDouble(&ok);;
+	if (ok) {
+            qDebug() << __PRETTY_FUNCTION__ << "emitting: [" << f << "]";
+            emit currentPrice(f);
+	}
     }
-
-    // QJsonValue val = doc.value("amount");
-    // qDebug() << __PRETTY_FUNCTION__ << "[" <<  doc.value("amount") << "]";
-
-    emit currentPrice(100.00);
 }
 
 void ExchangeRate::requestPrice(QString units)
